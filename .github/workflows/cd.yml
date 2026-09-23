@@ -36,3 +36,6 @@ jobs:
     
       - name: Build & push to Artifact Registry
         run: gcloud builds submit --tag us-central1-docker.pkg.dev/notely-509507/notely-ar-repo/notely:latest .
+
+      - name: Deploy service
+        run: gcloud run deploy notely --image us-central1-docker.pkg.dev/notely-509507/notely-ar-repo/notely:latest --region us-central1 --allow-unauthenticated --project notely-509507 --max-instances=4
